@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC次元站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        .header {
+            height: 50px;
+            background: #FB7299;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            width: 140px;
+        }
+        .search-wrap {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        #search {
+            width: 520px;
+            height: 34px;
+            border: none;
+            border-radius: 17px 0 0 17px;
+            padding: 0 20px;
+            font-size: 15px;
+            outline: none;
+        }
+        #searchBtn {
+            height: 34px;
+            border: none;
+            border-radius: 0 17px 17px 0;
+            padding: 0 20px;
+            background: #eee;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .video-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .video-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px #ccc;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .video-cover {
+            width: 100%;
+            height: 130px;
+            background: #ccd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        .video-title {
+            padding: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* 同色隐藏文字，长按选中可见 */
+        .secret-text {
+            color: #ffffff;
+            background: #ffffff;
+            margin-top: 20px;
+            padding: 5px;
+            font-size: 12px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">MC次元站</div>
+        <div class="search-wrap">
+            <input type="text" id="search" placeholder="搜索视频、关键词...">
+            <button id="searchBtn">搜索</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="video-list">
+            <div class="video-card">
+                <div class="video-cover">搞笑日常 01</div>
+                <div class="video-title">乱改生存基地，翻车现场</div>
+            </div>
+            <div class="video-card">
+                <div class="video-cover">红石整活 02</div>
+                <div class="video-title">瞎玩红石机器，全部报废</div>
+            </div>
+            <div class="video-card">
+                <div class="video-cover">洞穴探险 03</div>
+                <div class="video-title">下矿迷路，被怪物追赶</div>
+            </div>
+            <div class="video-card">
+                <div class="video-cover">诡异建筑 04</div>
+                <div class="video-title">旁边多出一模一样的房子</div>
+            </div>
+        </div>
+
+        <p class="secret-text">真正的入口，藏在无人注视的角落</p>
+    </div>
+
+    <script>
+        // 点击视频弹出审核提示
+        const cards = document.querySelectorAll('.video-card');
+        cards.forEach(item => {
+            item.onclick = function(){
+                alert('视频正在审核中，暂时无法播放');
+            }
+        });
+
+        // 搜索逻辑
+        const searchInput = document.getElementById('search');
+        const searchBtn = document.getElementById('searchBtn');
+        function searchAct(){
+            let key = searchInput.value.trim();
+            if(key === '虚无'){
+                location.href = 'pass.html';
+            }
+        }
+        searchBtn.onclick = searchAct;
+        searchInput.onkeydown = function(e){
+            if(e.key === 'Enter') searchAct();
+        }
+    </script>
+</body>
+</html>
